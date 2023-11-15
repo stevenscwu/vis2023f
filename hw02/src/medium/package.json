@@ -1,0 +1,14 @@
+{
+  "name": "0f632912efd974bb",
+  "main": "0f632912efd974bb@63.js",
+  "version": "63.0.0",
+  "homepage": "https://observablehq.com/d/0f632912efd974bb",
+  "author": {
+    "name": "Steven Wu's Workspace",
+    "url": "https://observablehq.com/@steven-wu-ws"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
