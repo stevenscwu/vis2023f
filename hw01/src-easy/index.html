@@ -1,0 +1,126 @@
+
+
+<!-- https://www.geeksforgeeks.org/how-to-export-html-table-to-csv-using-javascript/ -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        table, th, td {
+            border: 1px solid blue;
+            margin: 10px auto;
+            padding: 1px 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <br><br>
+    <button type="button" onclick="tableToCSV()">
+        Download CSV
+    </button>
+
+    <script type="text/javascript">
+        function createArray(length) {
+            var arr = new Array(length || 0),
+                i = length;
+
+            if (arguments.length > 1) {
+                var args = Array.prototype.slice.call(arguments, 1);
+                while (i--) arr[length - 1 - i] = createArray.apply(this, args);
+            }
+
+            return arr;
+        }
+
+        a1 = createArray(121, 15);
+
+        a1[0] = ['序號', '班級', '學號', '姓名', 'GitHub', '作業一', '作業二', '作業三', '作業四', '作業五', '作業六', '作業七', '作業八', '作業九', '作業十'];
+        for (var i = 1; i < a1.length; i++) {
+            a1[i][0] = i;
+
+            // 虛構學號1~3碼: 隨機選擇 111 或 112
+            var studentIDPart1to3 = Math.random() < 0.5 ? '111' : '112';
+
+            // 隨機選擇班級
+            var classes = ['資工系', '資工所', '電資AI', '電資資安', '創新AI'];
+            var selectedClass = classes[Math.floor(Math.random() * classes.length)];
+            a1[i][1] = selectedClass;
+
+            // 生成學號的不同部分
+            var studentIDPart4to6;
+            if (selectedClass === '資工系') {
+                studentIDPart4to6 = '590';
+            } else if (selectedClass === '資工所') {
+                studentIDPart4to6 = '598';
+            } else if (selectedClass === '電資AI') {
+                studentIDPart4to6 = 'C52';
+            } else if (selectedClass === '電資資安') {
+                studentIDPart4to6 = 'C53';
+            } else if (selectedClass === '創新AI') {
+                studentIDPart4to6 = 'C71';
+            }
+
+            var studentIDPart7to9 = (Math.floor(Math.random() * 999) + 1).toString().padStart(3, '0');
+            a1[i][2] = studentIDPart1to3 + studentIDPart4to6 + studentIDPart7to9;
+
+            a1[i][3] = String.fromCharCode(Math.floor(Math.random() * 0x51ff + 0x4e00)) +
+                String.fromCharCode(Math.floor(Math.random() * 0x51ff + 0x4e00)) +
+                String.fromCharCode(Math.floor(Math.random() * 0x51ff + 0x4e00));
+
+            a1[i][4] = (Math.random() + 1).toString(36).substring(2);
+
+            for (var j = 5; j < a1[0].length; j++) {
+                a1[i][j] = Math.floor(Math.random() * 10);
+            }
+        }
+
+        // Create the table
+        var table = document.createElement('table');
+        for (var i = 0; i < a1.length; i++) {
+            var row = table.insertRow();
+            for (var j = 0; j < a1[i].length; j++) {
+                var cell = row.insertCell(j);
+                cell.textContent = a1[i][j];
+            }
+        }
+        document.body.appendChild(table);
+
+        function tableToCSV() {
+            // Variable to store the final csv data
+            var csv_data = "\uFEFF"; // UTF-8 BOM character
+
+            // Convert the table data to CSV format
+            for (var i = 0; i < a1.length; i++) {
+                csv_data += a1[i].join(",") + "\n";
+            }
+
+            // Call this function to download csv file
+            downloadCSVFile(csv_data);
+        }
+
+        function downloadCSVFile(csv_data) {
+            // Create a Blob with UTF-8 encoding
+            var CSVFile = new Blob([csv_data], {
+                type: "text/csv;charset=utf-8"
+            });
+
+            // Create a temporary link to initiate download process
+            var temp_link = document.createElement('a');
+
+            // Download csv file
+            temp_link.download = "data.csv";
+            var url = window.URL.createObjectURL(CSVFile);
+            temp_link.href = url;
+
+            // This link should not be displayed
+            temp_link.style.display = "none";
+            document.body.appendChild(temp_link);
+
+            // Automatically click the link to trigger download
+            temp_link.click();
+            document.body.removeChild(temp_link);
+        }
+    </script>
+</body>
+</html>
