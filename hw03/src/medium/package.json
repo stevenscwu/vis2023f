@@ -1,0 +1,14 @@
+{
+  "name": "fcc636e48257cf3a",
+  "main": "fcc636e48257cf3a@463.js",
+  "version": "463.0.0",
+  "homepage": "https://observablehq.com/d/fcc636e48257cf3a",
+  "author": {
+    "name": "Steven Wu's Workspace",
+    "url": "https://observablehq.com/@steven-wu-ws"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4 - 5"
+  }
+}
