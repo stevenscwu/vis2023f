@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="zh-Hant-TW">
 <head>
@@ -176,30 +177,18 @@
   </div>
 
   <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-        To src folder: 
-        <input type="button" name="back" onclick="location.href='https://github.com/WEI52018/vis2023f/tree/main/hw07/src'" value="Press">
+    <div class="row hw12">
+      <div class="col-md-12 twenty">
+        open src folder
+        <input type="button" name="back" onclick="location.href='https://github.com/stevenscwu/vis2023f/tree/main/hw07/src'" value="Press">
+      </div>
     </div>
-  </div>
+
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      
 這次學習Unity，我深入了解了創建虛擬環境、人物角色，以及設計路徑的過程。我在每個人物模型上標註了組員的學號，這不僅提升了我對Unity的技能，還加深了我對其應用的理解。這次的學習經驗對於我未來興趣的發展和認識方面，具有極大的價值。
-    </div>
-  </div>
-
-  <!-- ------------------------------------------------>
-
-
-  <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <video id="video1" style="width:100%;max-width:100%;" controls="">
-        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-      </video>
     </div>
   </div>
 
@@ -248,6 +237,24 @@
       </table>
     </div>
   </div>
+
+  <!-- ------------------------------------------------>
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
+      <video id="video1" style="width:100%;max-width:100%;" controls="">
+        <source src="./src/Demo_hw07.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div>
+  <!-- <div class="row hw12">
+    <div class="col-md-12 twenty">
+      <video id="video1" style="width:100%;max-width:100%;" controls="">
+        <source src="./src/Demo_hw07_StrongBaseLine.mp4" type="video/mp4">
+      </video>
+    </div>
+  </div> -->
+  <!-- ------------------------------------------------>
+
   <!-- ------------------------------------------------>
 
 
@@ -265,7 +272,6 @@
   d3.select("#myCheckbox4").on("change",update);
   d3.select("#myCheckbox5").on("change",update);
   d3.select("#myCheckbox6").on("change",update);
-  d3.select("#myCheckbox7").on("change",update);
 
   update();
   
@@ -283,6 +289,15 @@
 
     if (d3.select("#myCheckbox3").property("checked")){
       score += parseInt(d3.select('#m3').html());   
+    }
+    if (d3.select("#myCheckbox4").property("checked")){
+      score += parseInt(d3.select('#m4').html());   
+    }
+    if (d3.select("#myCheckbox5").property("checked")){
+      score += parseInt(d3.select('#m5').html());   
+    }
+    if (d3.select("#myCheckbox6").property("checked")){
+      score += parseInt(d3.select('#m6').html());   
     }
 
     d3.select("#myTotal").html(score);    
